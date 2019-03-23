@@ -1,0 +1,80 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "keyofStringsOnly": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "typeRoots": [
+      "@types",
+      "./node_modules/@types",
+      "src/types/declarations.d.ts"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "~components/*": [
+        "components/*"
+      ],
+      "~containers/*": [
+        "containers/*"
+      ],
+      "~themes/*": [
+        "components/themes/*"
+      ],
+      "~atoms/*": [
+        "components/atoms/*"
+      ],
+      "~molecules/*": [
+        "components/molecules/*"
+      ],
+      "~organisms/*": [
+        "components/organisms/*"
+      ],
+      "~ecosystems/*": [
+        "components/ecosystems/*"
+      ],
+      "~environments/*": [
+        "components/environments/*"
+      ],
+      "~hoc/*": [
+        "components/hoc/*"
+      ],
+      "~redux/*": [
+        "redux/*"
+      ],
+      "~modules/*": [
+        "modules/*"
+      ],
+      "~types/*": [
+        "types/*"
+      ],
+      "~utils/*": [
+        "utils/*"
+      ],
+      "~themes/": [
+        "themes/*"
+      ],
+      "~/*": [
+        "*"
+      ],
+    },
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}

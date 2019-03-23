@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: calc(100% + calc(100vw - 100%));
+  letter-spacing: .1rem;
+  line-height: 1.75;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+}
+
+@include themed() {
+  $color-primary: map-get($theme-color, primary);
+  $color-font: map-get($theme-color, font);
+  $color-white: map-get($theme-color, white);
+  $font-gigantic: map-get($theme-font-size, gigantic);
+  $font-huge: map-get($theme-font-size, huge);
+  $font-large: map-get($theme-font-size, large);
+  $font-medium: map-get($theme-font-size, medium);
+  $font-small: map-get($theme-font-size, small);
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: #{$font-gigantic}rem;
+  }
+
+  h2 {
+    font-size: #{$font-huge}rem;
+    letter-spacing: .2rem;
+  }
+
+  h3 {
+    font-size: #{$font-large}rem;
+    letter-spacing: .18rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    color: $color-font;
+  }
+}
+
+:global {
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+}

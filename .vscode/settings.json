@@ -1,0 +1,79 @@
+{
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
+  "importSorter.sortConfiguration.importMembers.order": "unsorted",
+  "importSorter.sortConfiguration.customOrderingRules.defaultNumberOfEmptyLinesAfterGroup": 0,
+  "importSorter.sortConfiguration.customOrderingRules.defaultOrderLevel": 30,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "regex": ".+/styles.scss$",
+      "orderLevel": 1
+    },
+    {
+
+      "regex": "^moment/.*",
+      "orderLevel": 2
+    },
+    {
+      "regex": "^react$",
+      "orderLevel": 10
+    },
+    {
+      "regex": "^react-.+$",
+      "orderLevel": 15
+    },
+    {
+      "regex": "^redux$",
+      "orderLevel": 20
+    },
+    {
+      "regex": "^redux-.+$",
+      "orderLevel": 25
+    },
+    {
+      "regex": "^types/.*",
+      "orderLevel": 41
+    },
+    {
+      "regex": "^styles/.*",
+      "orderLevel": 42
+    },
+    {
+      "regex": "^images/.*",
+      "orderLevel": 43
+    },
+    {
+      "regex": "^routes/.*",
+      "orderLevel": 44
+    },
+    {
+      "regex": "^utils/.*",
+      "orderLevel": 50
+    },
+    {
+      "regex": "^modules/.*",
+      "orderLevel": 60
+    },
+    {
+      "regex": "^containers/.*",
+      "orderLevel": 70
+    },
+    {
+      "regex": "^components/Shared/.*",
+      "orderLevel": 80
+    },
+    {
+      "regex": "^components/.+/Shared/.*",
+      "orderLevel": 81
+    },
+    {
+      "regex": "^components/.*",
+      "orderLevel": 85
+    },
+    {
+      "regex": "^\\.{1,2}/.*",
+      "orderLevel": 100
+    }
+  ]
+}

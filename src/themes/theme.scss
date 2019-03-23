@@ -1,0 +1,44 @@
+@import './grey-scale/index';
+
+$themes: (
+  vintage-floral: $vintage-floral,
+);
+
+@function getColor($key) {
+  @return map-get(map-get($vintage-floral, color), $key);
+}
+
+@mixin themed() {
+  @each $theme-name, $theme in $themes {
+    :global .#{$theme-name} {
+      :local {
+        $theme: $theme !global;
+        $theme-color: map-get($theme, color) !global;
+        $theme-background: map-get($theme, background) !global;
+        $theme-shadow: map-get($theme, shadow) !global;
+        $theme-font: map-get($theme, font) !global;
+        $theme-font-size: map-get($theme-font, size) !global;
+        @content;
+      }
+    }
+  }
+}
+
+@each $theme-name, $theme in $themes {
+  :global .#{$theme-name} {
+    & {
+      $theme: $theme !global;
+      $theme-color: map-get($theme, color) !global;
+      $theme-font: map-get($theme, font) !global;
+      font-family: map-get($theme-font, family);
+    }
+  }
+}
+
+@function darken-color($color, $percent: 10%) {
+  @return darken($color, $percent)
+}
+
+@function lighten-color($color, $percent: 10%) {
+  @return lighten($color, $percent)
+}
