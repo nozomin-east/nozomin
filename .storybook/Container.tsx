@@ -1,6 +1,6 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import styles from '../src/themes/theme.scss'; // FIXME ts2307
+import styles from '../src/themes/theme.scss';
 
 interface ContainerProps {
   children: React.ReactNode;
