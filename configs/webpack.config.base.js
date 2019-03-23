@@ -4,10 +4,10 @@ const path = require('path');
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = (options) => ({
+module.exports = (options = {}) => ({
   context: __dirname + '/../src',
   entry: './index.tsx',
   output: {
@@ -49,7 +49,7 @@ module.exports = (options) => ({
             options: {
               modules: true,
               localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
-              sourceMap: options.mode === 'development',
+              sourceMap: options && options.mode === 'development',
             },
           },
           {
@@ -91,17 +91,18 @@ module.exports = (options) => ({
     alias: alias,
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'My App',
-      inject: 'body',
-      template: resolveApp('public/index.html')
-    }),
+  //   new HtmlWebpackPlugin({
+  //     title: 'My App',
+  //     inject: 'body',
+  //     template: resolveApp('dist/index.html')
+  //   }),
     new webpack.EnvironmentPlugin([
       'NODE_ENV'
     ]),
     new MiniCssExtractPlugin({
       filename: "assets/css/[name].css"
-    })
+    }),
+    ...(options.plugins || [])
   ],
   ...options
 });
