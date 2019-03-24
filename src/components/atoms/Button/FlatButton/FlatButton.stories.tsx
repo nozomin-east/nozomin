@@ -8,7 +8,7 @@ import Container from '~utils/storybook/Container';
 import { RouterProvider } from '~utils/storybook/provider';
 import FlatButton from './';
 
-storiesOf('/Button/FlatButton', module)
+storiesOf('/Atoms/Button/FlatButton', module)
   .add('Color', withInfo()(() => (
     <React.Fragment>
       <h2>Primary</h2>

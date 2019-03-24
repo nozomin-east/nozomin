@@ -3,7 +3,7 @@ import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import { UserIcon } from './';
 
-storiesOf('/Icon', module)
+storiesOf('/Atoms/Icon', module)
   .add('Icons', withInfo()(() => (
     <React.Fragment>
       <h2>UserIcon</h2>

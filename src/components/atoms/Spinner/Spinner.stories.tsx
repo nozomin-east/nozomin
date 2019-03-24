@@ -3,7 +3,7 @@ import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import Spinner from './';
 
-storiesOf('/Spinner', module)
+storiesOf('/Atoms/Spinner', module)
   .add('Color', withInfo()(() => (
     <React.Fragment>
       <h2>Primary</h2>
