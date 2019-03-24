@@ -1,15 +1,8 @@
-@include themed() {
-  $color-primary: map-get($theme-color, primary);
-  $color-secondary: map-get($theme-color, secondary);
-  $color-caution: map-get($theme-color, caution);
-  $color-white: map-get($theme-color, white);
-
-  .label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 8px;
-    background-color: rgba(#000, .25);
-    color: inherit;
-  }
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  background-color: rgba(#000, .25);
+  color: inherit;
 }
