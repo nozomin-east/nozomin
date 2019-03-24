@@ -1,11 +1,11 @@
 @import './grey-scale/index';
 
 $themes: (
-  vintage-floral: $vintage-floral,
+  grey-scale: $grey-scale,
 );
 
 @function getColor($key) {
-  @return map-get(map-get($vintage-floral, color), $key);
+  @return map-get(map-get($grey-scale, color), $key);
 }
 
 @mixin themed() {

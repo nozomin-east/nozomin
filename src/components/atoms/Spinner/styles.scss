@@ -1,0 +1,134 @@
+$base: 0.36em;
+$a: 1;
+$b: 0.6923076923;
+$c: 0.9615384615;
+$d: 0.6730769231;
+$size: 0.3846153846;
+$margin: 1.153846154;
+
+@mixin spin($animation-name, $color) {
+  @keyframes #{$animation-name} {
+    0%,
+    100% {
+      box-shadow: 0em (-$base*$a) 0em 0em $color,
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.2),
+        ($base*$c) 0em 0 0em rgba($color, 0.2),
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.2),
+        0em ($base*$c) 0 0em rgba($color, 0.2),
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.2),
+        (-$base*$a) 0em 0 0em rgba($color, 0.5),
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.7);
+    }
+    12.5% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.7),
+        ($base*$b) (-$base*$b) 0 0em $color,
+        ($base*$c) 0em 0 0em rgba($color, 0.2),
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.2),
+        0em ($base*$c) 0 0em rgba($color, 0.2),
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.2),
+        (-$base*$a) 0em 0 0em rgba($color, 0.2),
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.5);
+    }
+    25% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.5),
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.7),
+        ($base*$c) 0em 0 0em $color,
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.2),
+        0em ($base*$c) 0 0em rgba($color, 0.2),
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.2),
+        (-$base*$a) 0em 0 0em rgba($color, 0.2),
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.2);
+    }
+    37.5% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.2),
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.5),
+        ($base*$c) 0em 0 0em rgba($color, 0.7),
+        ($base*$d) ($base*$d) 0 0em $color,
+        0em ($base*$c) 0 0em rgba($color, 0.2),
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.2),
+        (-$base*$a) 0em 0 0em rgba($color, 0.2),
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.2);
+    }
+    50% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.2),
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.2),
+        ($base*$c) 0em 0 0em rgba($color, 0.5),
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.7),
+        0em ($base*$c) 0 0em $color,
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.2),
+        (-$base*$a) 0em 0 0em rgba($color, 0.2),
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.2);
+    }
+    62.5% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.2),
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.2),
+        ($base*$c) 0em 0 0em rgba($color, 0.2),
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.5),
+        0em ($base*$c) 0 0em rgba($color, 0.7),
+        (-$base*$b) ($base*$b) 0 0em $color,
+        (-$base*$a) 0em 0 0em rgba($color, 0.2),
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.2);
+    }
+    75% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.2),
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.2),
+        ($base*$c) 0em 0 0em rgba($color, 0.2),
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.2),
+        0em ($base*$c) 0 0em rgba($color, 0.5),
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.7),
+        (-$base*$a) 0em 0 0em $color,
+        (-$base*$b) (-$base*$b) 0 0em rgba($color, 0.2);
+    }
+    87.5% {
+      box-shadow: 0em (-$base*$a) 0em 0em rgba($color, 0.2),
+        ($base*$b) (-$base*$b) 0 0em rgba($color, 0.2),
+        ($base*$c) 0em 0 0em rgba($color, 0.2),
+        ($base*$d) ($base*$d) 0 0em rgba($color, 0.2),
+        0em ($base*$c) 0 0em rgba($color, 0.2),
+        (-$base*$b) ($base*$b) 0 0em rgba($color, 0.5),
+        (-$base*$a) 0em 0 0em rgba($color, 0.7),
+        (-$base*$b) (-$base*$b) 0 0em $color;
+    }
+  }
+}
+
+@include themed() {
+  $color-primary: map-get($theme-color, primary);
+  $color-white: map-get($theme-color, white);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    padding: 44px 0;
+    font-size: 5rem;
+
+    &.inline {
+      display: inline;
+      padding: 0;
+      font-size: 1rem;
+    }
+  }
+
+  .spinner {
+    position: relative;
+    transform: translateZ(0);
+    width: ($base*$size);
+    height: ($base*$size);
+    margin: ($base*$margin);
+    border-radius: 50%;
+    text-indent: -9999rem;
+
+    &.primary {
+      animation: spin-primary 1s infinite ease;
+    }
+
+    &.white {
+      animation: spin-white 1s infinite ease;
+    }
+
+    @include spin(spin-primary, $color-primary);
+    @include spin(spin-white, $color-white);
+  }
+}
