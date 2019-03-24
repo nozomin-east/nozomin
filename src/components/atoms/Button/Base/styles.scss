@@ -5,6 +5,7 @@
   $color-white: map-get($theme-color, white);
 
   .button {
+    position: relative;
     border: none;
     border-radius: 3px;
     padding: 6px 24px;
@@ -13,15 +14,31 @@
     outline: none;
   }
 
+  .disabled {
+    opacity: .45;
+    cursor: default !important;
+  }
+
+  .loading {
+    color: transparent !important;
+  }
+
+  .loading .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+
   .primary {
     background-color: $color-primary;
     color: $color-white;
 
-    &:hover {
+    &:not(.disabled):hover {
       background-color: darken($color-primary, 10);
     }
 
-    &:active {
+    &:not(.disabled):active {
       background-color: darken($color-primary, 20);
     }
   }
@@ -29,11 +46,11 @@
   .secondary {
     background-color: $color-secondary;
 
-    &:hover {
+    &:not(.disabled):hover {
       background-color: darken($color-secondary, 10);
     }
 
-    &:active {
+    &:not(.disabled):active {
       background-color: darken($color-secondary, 20);
     }
   }
@@ -42,11 +59,11 @@
     background-color: $color-caution;
     color: $color-white;
 
-    &:hover {
+    &:not(.disabled):hover {
       background-color: darken($color-caution, 10);
     }
 
-    &:active {
+    &:not(.disabled):active {
       background-color: darken($color-caution, 20);
     }
   }

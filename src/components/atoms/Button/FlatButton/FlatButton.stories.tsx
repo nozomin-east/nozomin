@@ -11,21 +11,41 @@ storiesOf('/Button/FlatButton', module)
         color="primary"
         onClick={action('clicked')}
       >
-        Basic
+        Button
       </FlatButton>
       <h2>Secondary</h2>
       <FlatButton
         color="secondary"
         onClick={action('clicked')}
       >
-        Basic
+        Button
       </FlatButton>
       <h2>Caution</h2>
       <FlatButton
         color="caution"
         onClick={action('clicked')}
       >
-        Basic
+        Button
+      </FlatButton>
+    </React.Fragment>
+  ))
+  .add('State', () => (
+    <React.Fragment>
+      <h2>Disabled</h2>
+      <FlatButton
+        disabled
+        color="primary"
+        onClick={action('clicked')}
+      >
+        Button
+      </FlatButton>
+      <h2>Loading</h2>
+      <FlatButton
+        loading
+        color="primary"
+        onClick={action('clicked')}
+      >
+        Button
       </FlatButton>
     </React.Fragment>
   ));
