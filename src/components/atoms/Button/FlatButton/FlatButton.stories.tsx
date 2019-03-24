@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
+import { RouterProvider } from '~utils/storybook/provider';
 import FlatButton from './';
 
 storiesOf('/Button/FlatButton', module)
@@ -39,6 +41,20 @@ storiesOf('/Button/FlatButton', module)
       >
         Button
       </FlatButton>
+      <FlatButton
+        disabled
+        color="secondary"
+        onClick={action('clicked')}
+      >
+        Button
+      </FlatButton>
+      <FlatButton
+        disabled
+        color="caution"
+        onClick={action('clicked')}
+      >
+        Button
+      </FlatButton>
       <h2>Loading</h2>
       <FlatButton
         loading
@@ -47,5 +63,34 @@ storiesOf('/Button/FlatButton', module)
       >
         Button
       </FlatButton>
+      <FlatButton
+        loading
+        color="secondary"
+        onClick={action('clicked')}
+      >
+        Button
+      </FlatButton>
+      <FlatButton
+        loading
+        color="caution"
+        onClick={action('clicked')}
+      >
+        Button
+      </FlatButton>
+    </React.Fragment>
+  ))
+  .add('As Component', () => (
+    <React.Fragment>
+      <h2>As Link</h2>
+      <RouterProvider>
+        <FlatButton
+          color="primary"
+          as={Link}
+          to="https://google.com/"
+          onClick={action('clicked')}
+        >
+          Button
+        </FlatButton>
+      </RouterProvider>
     </React.Fragment>
   ));

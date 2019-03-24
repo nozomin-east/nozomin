@@ -1,11 +1,14 @@
 import styles from './styles.scss';
 import React, { useMemo } from 'react';
+import { Link, LinkProps } from 'react-router-dom';
 import cx from 'classnames';
 import Spinner from '~components/atoms/Spinner';
 import withStyleNames from '~components/hoc/withStyleNames';
 import { Color } from '~types/component';
 
-export type ButtonProps = {
+export type ButtonProps = BaseProps | AsLinkProps;
+
+type BaseProps = {
   styleName?: string;
   className?: string;
   children: React.ReactNode;
@@ -13,7 +16,14 @@ export type ButtonProps = {
   loading?: boolean;
   color?: Color;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  as?: any;
 };
+
+type AsLinkProps = BaseProps
+  & {
+    as: typeof Link;  // TODO Linkコンポーネント作ったら差し替え
+  }
+  & LinkProps;
 
 const Base: React.SFC<ButtonProps> = (props) => {
   const {
@@ -22,6 +32,8 @@ const Base: React.SFC<ButtonProps> = (props) => {
     disabled = false,
     loading = false,
     color = 'primary',
+    onClick,
+    as,
     ...restProps
   } = props;
 
@@ -30,7 +42,7 @@ const Base: React.SFC<ButtonProps> = (props) => {
     disabled: disabled || loading,
   });
 
-  const renderSpinner = useMemo(() => {
+  const renderSpinner = useMemo(() => () => {
     const spinnerColor = (color === 'primary' || color === 'caution') ? 'white' : 'primary';
 
     return loading && (
@@ -43,15 +55,33 @@ const Base: React.SFC<ButtonProps> = (props) => {
     );
   }, [loading]);
 
+  const renderText = useMemo(() => () => {
+    const WrapperComponent = as;
+    return WrapperComponent ? (
+      <WrapperComponent
+        styleName="inner"
+        {...restProps}
+      >
+        {children}
+      </WrapperComponent>
+    ) : (
+      <div
+        styleName="inner"
+      >
+        {children}
+      </div>
+    );
+  }, [as]);
+
   return (
     <button
       className={className}
       styleName={styleNames}
       disabled={disabled || loading}
-      {...restProps}
+      onClick={onClick}
     >
-      {renderSpinner}
-      {children}
+      {renderSpinner()}
+      {renderText()}
     </button>
   );
 };

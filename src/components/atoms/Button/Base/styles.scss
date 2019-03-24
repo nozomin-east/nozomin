@@ -6,16 +6,24 @@
 
   .button {
     position: relative;
+    padding: 0;
     border: none;
     border-radius: 3px;
-    padding: 6px 24px;
-    cursor: pointer;
-    transition: background-color 600ms ease-out;
     outline: none;
+    overflow: hidden;
+    transition: background-color 600ms ease-out;
+    cursor: pointer;
+  }
+
+  .inner {
+    display: block;
+    padding: 6px 24px;
+    text-decoration: none;
+    color: inherit;
   }
 
   .disabled {
-    opacity: .45;
+    opacity: .6;
     cursor: default !important;
   }
 
