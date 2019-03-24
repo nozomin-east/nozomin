@@ -50,10 +50,9 @@ const Base: React.SFC<ButtonProps> = (props) => {
       <Inner
         left={left}
         right={right}
-        color={color}
         {...restProps}
       />
-    ), [restProps, color, left, right]);
+    ), [restProps, left, right]);
 
   return (
     <button
