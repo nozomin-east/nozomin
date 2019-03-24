@@ -1,0 +1,22 @@
+.icon {
+  display: inline-block;
+  opacity: 1;
+  margin: 0;
+  width: 1em;
+  height: 1em;
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: inherit;
+  text-align: center;
+  backface-visibility: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  color: inherit;
+  font-size: inherit;
+  transition: opacity 0.2s, color 0.2s, transform 0.2s;
+}
+
+.icon.user:before {
+  content: "\f007";
+}
