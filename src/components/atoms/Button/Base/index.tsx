@@ -1,14 +1,12 @@
 import styles from './styles.scss';
 import React, { useMemo } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
 import cx from 'classnames';
-import Spinner from '~components/atoms/Spinner';
 import withStyleNames from '~components/hoc/withStyleNames';
 import { Color } from '~types/component';
+import ButtonSpinner from './ButtonSpinner';
+import Inner, { InnerProps } from './Inner';
 
-export type ButtonProps = BaseProps | AsLinkProps;
-
-type BaseProps = {
+export type ButtonProps = {
   styleName?: string;
   className?: string;
   children: React.ReactNode;
@@ -16,18 +14,10 @@ type BaseProps = {
   loading?: boolean;
   color?: Color;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  as?: any;
-};
-
-type AsLinkProps = BaseProps
-  & {
-    as: typeof Link;  // TODO Linkコンポーネント作ったら差し替え
-  }
-  & LinkProps;
+} & InnerProps;
 
 const Base: React.SFC<ButtonProps> = (props) => {
   const {
-    children,
     className,
     disabled = false,
     loading = false,
@@ -46,32 +36,19 @@ const Base: React.SFC<ButtonProps> = (props) => {
     const spinnerColor = (color === 'primary' || color === 'caution') ? 'white' : 'primary';
 
     return loading && (
-      <div styleName="spinner">
-        <Spinner
-          inline
-          color={spinnerColor}
-        />
-      </div>
+      <ButtonSpinner
+        inline
+        color={spinnerColor}
+      />
     );
-  }, [loading]);
+  }, [loading, color]);
 
-  const renderText = useMemo(() => () => {
-    const WrapperComponent = as;
-    return WrapperComponent ? (
-      <WrapperComponent
-        styleName="inner"
-        {...restProps}
-      >
-        {children}
-      </WrapperComponent>
-    ) : (
-      <div
-        styleName="inner"
-      >
-        {children}
-      </div>
-    );
-  }, [as]);
+  const renderText = useMemo(() => () => (
+    <Inner
+      as={as}
+      {...restProps}
+    />
+  ), [as, restProps]);
 
   return (
     <button
