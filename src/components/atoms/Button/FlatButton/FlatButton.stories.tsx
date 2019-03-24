@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import { RouterProvider } from '~utils/storybook/provider';
 import FlatButton from './';
 
 storiesOf('/Button/FlatButton', module)
-  .add('Color', () => (
+  .add('Color', withInfo()(() => (
     <React.Fragment>
       <h2>Primary</h2>
       <FlatButton
@@ -30,8 +31,8 @@ storiesOf('/Button/FlatButton', module)
         Button
       </FlatButton>
     </React.Fragment>
-  ))
-  .add('State', () => (
+  )))
+  .add('State', withInfo()(() => (
     <React.Fragment>
       <h2>Disabled</h2>
       <FlatButton
@@ -78,8 +79,8 @@ storiesOf('/Button/FlatButton', module)
         Button
       </FlatButton>
     </React.Fragment>
-  ))
-  .add('As Component', () => (
+  )))
+  .add('As Component', withInfo()(() => (
     <React.Fragment>
       <h2>As Link</h2>
       <RouterProvider>
@@ -93,4 +94,4 @@ storiesOf('/Button/FlatButton', module)
         </FlatButton>
       </RouterProvider>
     </React.Fragment>
-  ));
+  )));

@@ -1,9 +1,10 @@
 import React from 'react';
+import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import Spinner from './';
 
 storiesOf('/Spinner', module)
-  .add('Color', () => (
+  .add('Color', withInfo()(() => (
     <React.Fragment>
       <h2>Primary</h2>
       <div>
@@ -14,12 +15,12 @@ storiesOf('/Spinner', module)
         <Spinner color="white" />
       </div>
     </React.Fragment>
-  ))
-  .add('Inline', () => (
+  )))
+  .add('Inline', withInfo()(() => (
     <React.Fragment>
       <h2>Inline</h2>
       <div>
         <Spinner inline />
       </div>
     </React.Fragment>
-  ));
+  )));
