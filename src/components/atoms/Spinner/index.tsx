@@ -3,10 +3,10 @@ import React from 'react';
 import cx from 'classnames';
 import withStyleNames from '~components/hoc/withStyleNames';
 
-interface SpinnerProps {
+export type SpinnerProps = {
   color?: 'primary' | 'white';
   inline?: boolean;
-}
+};
 
 const Spinner: React.SFC<SpinnerProps> = ({
   color = 'primary',

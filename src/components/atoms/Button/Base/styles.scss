@@ -1,0 +1,64 @@
+@include themed() {
+  $color-primary: map-get($theme-color, primary);
+  $color-secondary: map-get($theme-color, secondary);
+  $color-caution: map-get($theme-color, caution);
+  $color-white: map-get($theme-color, white);
+
+  .button {
+    position: relative;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    overflow: hidden;
+    transition: background-color 600ms ease-out;
+    cursor: pointer;
+  }
+
+  .disabled {
+    opacity: .6;
+    cursor: default !important;
+  }
+
+  .loading {
+    color: transparent !important;
+  }
+
+  .primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:not(.disabled):hover {
+      background-color: darken($color-primary, 10);
+    }
+
+    &:not(.disabled):active {
+      background-color: darken($color-primary, 20);
+    }
+  }
+
+  .secondary {
+    background-color: $color-secondary;
+
+    &:not(.disabled):hover {
+      background-color: darken($color-secondary, 10);
+    }
+
+    &:not(.disabled):active {
+      background-color: darken($color-secondary, 20);
+    }
+  }
+
+  .caution {
+    background-color: $color-caution;
+    color: $color-white;
+
+    &:not(.disabled):hover {
+      background-color: darken($color-caution, 10);
+    }
+
+    &:not(.disabled):active {
+      background-color: darken($color-caution, 20);
+    }
+  }
+}

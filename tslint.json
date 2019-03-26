@@ -17,7 +17,6 @@
   },
   "rules": {
     "interface-over-type-literal": false,
-    "no-boolean-literal-compare": true,
     "array-type": false,
     "ban-types": false,
     "no-object-literal-type-assertion": false,
