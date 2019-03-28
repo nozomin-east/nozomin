@@ -3,8 +3,8 @@ import React, { useMemo } from 'react';
 import cx from 'classnames';
 import withStyleNames from '~components/hoc/withStyleNames';
 import { Color } from '~types/component';
-import ButtonSpinner from './ButtonSpinner';
 import Inner, { InnerProps } from './Inner';
+import Spinner from './Spinner';
 
 export type ButtonProps = {
   styleName?: string;
@@ -22,8 +22,9 @@ const Base: React.SFC<ButtonProps> = (props) => {
     disabled = false,
     loading = false,
     color = 'primary',
+    left,
+    right,
     onClick,
-    as,
     ...restProps
   } = props;
 
@@ -32,23 +33,26 @@ const Base: React.SFC<ButtonProps> = (props) => {
     disabled: disabled || loading,
   });
 
-  const renderSpinner = useMemo(() => () => {
-    const spinnerColor = (color === 'primary' || color === 'caution') ? 'white' : 'primary';
+  const renderSpinner = useMemo(() =>
+    () => {
+      const spinnerColor = (color === 'primary' || color === 'caution') ? 'white' : 'primary';
 
-    return loading && (
-      <ButtonSpinner
-        inline
-        color={spinnerColor}
+      return loading && (
+        <Spinner
+          inline
+          color={spinnerColor}
+        />
+      );
+    }, [loading, color]);
+
+  const renderInner = useMemo(() =>
+    () => (
+      <Inner
+        left={left}
+        right={right}
+        {...restProps}
       />
-    );
-  }, [loading, color]);
-
-  const renderText = useMemo(() => () => (
-    <Inner
-      as={as}
-      {...restProps}
-    />
-  ), [as, restProps]);
+    ), [restProps, left, right]);
 
   return (
     <button
@@ -58,7 +62,7 @@ const Base: React.SFC<ButtonProps> = (props) => {
       onClick={onClick}
     >
       {renderSpinner()}
-      {renderText()}
+      {renderInner()}
     </button>
   );
 };

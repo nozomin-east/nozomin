@@ -1,36 +1,57 @@
 import styles from './styles.scss';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import withStyleNames from '~components/hoc/withStyleNames';
+import Label from './Label';
+import Wrapper from './Wrapper';
 
-export type InnerProps = BaseProps | AsLinkProps;
+export type InnerProps = {
+  children: React.ReactNode;
+  left?: React.ReactNode;
+  right?: React.ReactNode;
+} & (BaseProps | AsLinkProps);
 
 type BaseProps = {
-  children: React.ReactNode;
   as?: any;
 };
 
 type AsLinkProps = {
-  children: React.ReactNode;
   as: typeof Link;  // TODO Linkコンポーネント作ったら差し替え
 }
 & LinkProps;
 
-const Inner: React.SFC<InnerProps> = ({ children, as, ...restProps }) => {
-  const WrapperComponent = as;
-  return WrapperComponent ? (
+const Inner: React.SFC<InnerProps> = ({
+  children,
+  left,
+  right,
+  as,
+  ...restProps
+}) => {
+  const renderLeft = useMemo(() =>
+    () => left && (
+      <Label>
+        {left}
+      </Label>
+    ), [left]);
+
+  const renderRight = useMemo(() =>
+    () => right && (
+      <Label>
+        {right}
+      </Label>
+    ), [right]);
+
+  const WrapperComponent = as || Wrapper;
+
+  return (
     <WrapperComponent
       styleName="inner"
       {...restProps}
     >
-      {children}
+      {renderLeft()}
+      <div styleName="body">{children}</div>
+      {renderRight()}
     </WrapperComponent>
-  ) : (
-    <span
-      styleName="inner"
-    >
-      {children}
-    </span>
   );
 };
 
